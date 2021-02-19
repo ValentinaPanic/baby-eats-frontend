@@ -7,12 +7,14 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import users from './reducers/users'
 import currentUser from './reducers/currentUser'
+import loginForm from './reducers/loginForm'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose 
 
 const reducers = combineReducers({
   users,
-  currentUser
+  currentUser,
+  loginForm
 })
 const store = createStore(reducers, composeEnhancer(applyMiddleware(thunk)))
 
