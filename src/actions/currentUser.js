@@ -2,12 +2,17 @@ export const setCurrentUser = user => {
     return {
         type: "SET_CURRENT_USER",
         user
-
+    }
+}
+export const clearCurrentUser = () => {
+    return {
+        type: "CLEAR_CURRENT_USER"
+        
     }
 }
 
 // async creator
-export const login = credentials => {
+    export const login = credentials => {
         console.log(credentials)
         return dispatch => {
             fetch("http://localhost:3001/login", {
@@ -32,6 +37,15 @@ export const login = credentials => {
 
     }
 
+    export const logout = () => {
+        return dispatch =>{
+            dispatch(clearCurrentUser())
+            return fetch( "http://localhost:3001/logout",{
+                credentials: "include",
+                method: "DELETE"
+            })
+        }
+    }
     export const getCurrentUser = () => {
        
         return dispatch => {
