@@ -28,7 +28,7 @@ export const clearCurrentUser = () => {
                     if (user.error){
                         alert(user.error)
                     } else {
-                        dispatch(setCurrentUser(user))
+                        dispatch(setCurrentUser(user.data))
                     }
             }
             )
@@ -62,7 +62,7 @@ export const clearCurrentUser = () => {
                     if (user.error){
                         alert(user.error)
                     } else {
-                        dispatch(setCurrentUser(user))
+                        dispatch(setCurrentUser(user.data))
                     }
             }
             )
