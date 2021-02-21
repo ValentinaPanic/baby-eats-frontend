@@ -5,3 +5,10 @@ export const updateLoginForm = formData => {
 
     }
 }
+
+export const resetForm = ()=> {
+    return {
+        type: "RESET_FORM",
+        
+    }
+}
