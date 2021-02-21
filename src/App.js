@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import  WelcomePage  from './containers/WelcomePageContainer'
+import  WeekContainer  from './containers/WeekContainer'
 
 class App extends Component{
 
   render(){
     return (      
-    <WelcomePage/> 
+      <div>
+        <WelcomePage/> 
+        <WeekContainer/>
+      </div>
+
     )
   } 
 }
