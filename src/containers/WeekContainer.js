@@ -1,11 +1,16 @@
 import React from "react";
 import "../Week.css";
+import { Route, Redirect } from 'react-router-dom'
+import Login from '../components/Login'
 import { startOfWeek,format, addDays, endOfWeek, isSameWeek, isSameDay, toDate, addWeeks, subWeeks } from "date-fns";
+
 
 class Calendar extends React.Component {
   state = {
     currentWeek: new Date(),
-    selectedDate: new Date()
+    selectedDate: new Date(),
+    meals: ["lunch"],
+    foods: ["Avocado"]
   };
 
   renderHeader() {
@@ -75,10 +80,12 @@ class Calendar extends React.Component {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
+            <div>{this.state.meals}: {this.state.foods}</div>
           </div>
         );
         day = addDays(day, 1);
       }
+      
       rows.push(
         <div className="row" key={day}>
           {days}
@@ -90,9 +97,17 @@ class Calendar extends React.Component {
   }
 
   onDateClick = day => {
+    <Redirect to='/login' component={Login}/>
+    console.log()
+   
     this.setState({
-      selectedDate: day
+      selectedDate: day,
+      ...this.state.meals,
+      ...this.state.foods
+
+
     });
+     return(<dib>Hellooaoo</dib>)
   };
 
   nextWeek = () => {
@@ -113,6 +128,7 @@ class Calendar extends React.Component {
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
+     
       </div>
     );
   }
