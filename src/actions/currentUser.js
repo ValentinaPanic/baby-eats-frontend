@@ -1,4 +1,5 @@
 import { resetForm } from './loginForm'
+import { resetSignUpForm } from './signUpForm'
 import { getMyTrips } from './myWeeks'
 export const setCurrentUser = user => {
     return {
@@ -41,6 +42,9 @@ export const clearCurrentUser = () => {
     }
     export const signUp = credentials => {
         console.log(credentials)
+        const user = {
+            user: credentials
+        }
         return dispatch => {
             fetch("http://localhost:3001/signup", {
                 credentials: "include",
@@ -48,7 +52,7 @@ export const clearCurrentUser = () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(credentials)
+                body: JSON.stringify(user)
             })
             .then(response => response.json())
             .then(user =>{
@@ -56,7 +60,7 @@ export const clearCurrentUser = () => {
                         alert(user.error)
                     } else {
                         dispatch(setCurrentUser(user.data))
-                        dispatch(resetForm())
+                        dispatch(resetSignUpForm())
                     }
             }
             )
@@ -88,6 +92,7 @@ export const clearCurrentUser = () => {
             })
             .then(response => response.json())
             .then(user =>{
+                
                     if (user.error){
                         alert(user.error)
                     } else {
