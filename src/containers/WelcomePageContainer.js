@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import Login from '../components/Login'
+import SignUp from '../components/SignUp'
 import Logout from '../components/Logout'
+import Home from "../components/Home";
 import { connect } from 'react-redux'
 import { getCurrentUser} from '../actions/currentUser'
+import { Route, withRouter } from "react-router-dom";
+import WeekContainer from './WeekContainer';
 //  import WeekNotes from '../components/WeekNotes'
 
 
@@ -14,17 +18,19 @@ import { getCurrentUser} from '../actions/currentUser'
     
 
     render(){
-        console.log(this.props.currentUser)
+        const { loggedIn } = this.props
         return(
             <div>
-                {  this.props.currentUser ? `Welcome ${this.props.currentUser.attributes.name}` : ""}
-                {  this.props.currentUser ? <Logout/> : <Login/> }
-          
-
-            <p>
-                Welcome to Baby Eats <br></br>
-                We are here to help you organize your baby meals. 
-            </p> 
+                {loggedIn ? <Logout/> : null}
+                
+                <Route exact path = "/login" component={Login}/>  
+                <Route exact path = "/signup" component={SignUp}/> 
+                <Route exact path = "/weeks" component={WeekContainer}/>
+                <h3>
+                    Welcome to Baby Eats <br></br>
+                    We are here to help you organize your baby meals.   
+                </h3> 
+                {loggedIn ? <WeekContainer/> : <Home/>}
             </div>
         )
 
@@ -33,8 +39,8 @@ import { getCurrentUser} from '../actions/currentUser'
  }
  const mapStateToProps = state => {
     return{
-       currentUser: state.currentUser
+        loggedIn: !!state.currentUser
     }
    
   }
- export default connect(mapStateToProps, { getCurrentUser })(WelcomePage)
+ export default withRouter(connect(mapStateToProps, { getCurrentUser })(WelcomePage))
