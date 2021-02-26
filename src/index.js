@@ -6,8 +6,9 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { BrowserRouter as Router} from 'react-router-dom'
-import users from './reducers/users'
-import myWeeks from './reducers/myWeeks'
+
+import newDayForm from './reducers/newDayForm'
+import days from './reducers/daysReducer'
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
 import signUpForm from './reducers/signUpForm'
@@ -15,11 +16,11 @@ import signUpForm from './reducers/signUpForm'
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose 
 
 const reducers = combineReducers({
-  users,
   currentUser,
   loginForm,
-  myWeeks,
-  signUpForm
+  signUpForm,
+  newDayForm,
+  days,
 })
 const store = createStore(reducers, composeEnhancer(applyMiddleware(thunk)))
 
