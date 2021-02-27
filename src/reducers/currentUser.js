@@ -1,4 +1,4 @@
-const currentUsers = (state = null, action) => {
+const currentUsers = (state = [], action) => {
 
     switch (action.type){
         case "SET_CURRENT_USER":

@@ -1,6 +1,6 @@
 import { resetForm } from './loginForm'
 import { resetSignUpForm } from './signUpForm'
-import { getMyTrips } from './myWeeks'
+import { getDays, clearDays } from './daysAction'
 export const setCurrentUser = user => {
     return {
         type: "SET_CURRENT_USER",
@@ -15,8 +15,7 @@ export const clearCurrentUser = () => {
 }
 
 // async creator
-    export const login = credentials => {
-        console.log(credentials)
+    export const login = (credentials, history) => {
         return dispatch => {
             fetch("http://localhost:3001/login", {
                 credentials: "include",
@@ -33,6 +32,7 @@ export const clearCurrentUser = () => {
                     } else {
                         dispatch(setCurrentUser(user.data))
                         dispatch(resetForm())
+                        history.push("/")
                     }
             }
             )
@@ -40,8 +40,7 @@ export const clearCurrentUser = () => {
         }
 
     }
-    export const signUp = credentials => {
-        console.log(credentials)
+    export const signUp =  (credentials, history) => {
         const user = {
             user: credentials
         }
@@ -61,6 +60,7 @@ export const clearCurrentUser = () => {
                     } else {
                         dispatch(setCurrentUser(user.data))
                         dispatch(resetSignUpForm())
+                        history.push("/")
                     }
             }
             )
@@ -73,6 +73,8 @@ export const clearCurrentUser = () => {
     export const logout = () => {
         return dispatch =>{
             dispatch(clearCurrentUser())
+            dispatch(clearDays())
+
             return fetch( "http://localhost:3001/logout",{
                 credentials: "include",
                 method: "DELETE"
@@ -97,7 +99,7 @@ export const clearCurrentUser = () => {
                         alert(user.error)
                     } else {
                         dispatch(setCurrentUser(user.data))
-                        dispatch(getMyTrips())
+                        dispatch(getDays())
                     }
             }
             )

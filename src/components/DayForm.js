@@ -2,11 +2,15 @@ import React from 'react'
 import { connect } from "react-redux"
 import { updateDay } from "../actions/newDayForm"
 import { postDay } from "../actions/daysAction"
-const DayForm = ({dayData, updateDay, postDay, userId}) => {
+const DayForm = ({dayData, updateDay, postDay, userId, history}) => {
 
     const handleChange = (event) =>{
         const { name,value} = event.target 
-        updateDay(name, value) 
+        const updatedFormInfo = {
+            ...dayData,
+            [name]: value
+          }
+        updateDay(updatedFormInfo) 
     }
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -14,8 +18,21 @@ const DayForm = ({dayData, updateDay, postDay, userId}) => {
         postDay({
             ...dayData,
             userId
-        })
+        }, history)
     }
+       
+      const handleFoodsChange = event => {
+        const { name, value } = event.target
+        console.log(name)
+        const updatedFormInfo = {
+          ...dayData,
+          foods: {
+            ...dayData.foods,
+            [name]: value
+          }
+        }
+        updateDay(updatedFormInfo)
+      }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -27,16 +44,16 @@ const DayForm = ({dayData, updateDay, postDay, userId}) => {
             </select> 
           
             <input type="date" name="date" value={dayData.date} onChange={handleChange}/>
-            <input type="text" name="foods" value={dayData.foods.name} onChange={handleChange}/>
+            <input type="text" name="name" value={dayData.foods.name} onChange={handleFoodsChange}/>
             <input type="submit" />
         </form>
     )
 }
 const mapStateToProps = state =>{
-
+    const userId = state.currentUser ? state.currentUser.id : ""
     return {
         dayData: state.newDayForm,
-        userId: state.currentUser.id
+        userId
     }
 }
 
