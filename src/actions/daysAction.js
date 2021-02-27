@@ -1,3 +1,4 @@
+import { clearDayForm } from "./newDayForm";
 export const setDays = days => {
    
     return {
@@ -43,16 +44,18 @@ export const getDays = () => {
     }
 }
 
-export const postDay = (dayData) => {
+export const postDay = (dayData, history) => {
     const dbDayData = {
         day: {
             user_id: dayData.userId,
             date: dayData.date,
             meal_type: dayData.mealType,
-            foods: dayData.foods
+            foods: {
+                name: dayData.foods.name
 
-        }
+        }}
     }
+ 
     return dispatch => {
         fetch("http://localhost:3001/days", {
             credentials: "include",
@@ -64,12 +67,14 @@ export const postDay = (dayData) => {
         })
         .then(response => response.json())
         .then(data =>{
-            console.log(data )
-                // if (data.error){
-                //     alert(data.error)
-                // } else {
-                //     dispatch(addDay(data.data))
-                // }
+         
+                if (data.error){
+                    alert(data.error)
+                } else {
+                    dispatch(addDay(data.data))
+                    dispatch(clearDayForm())
+                    history.push('/')
+                }
             }
         )
     }
