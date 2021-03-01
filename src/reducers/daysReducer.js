@@ -1,18 +1,17 @@
 
 const days = (state = [], action) => {
-    switch (action.type) {
-       
+    console.log(action)
+        switch (action.type) {
         case "SET_DAYS":
-             
             return {
                 days: action.days
             }
             case "ADD_DAY":   
-                    
+           console.log(action)         
              return {
-                 ...state,
-                state: state.days.concat(action.day)
+                 days: [...state.days, action.day]
              }
+             
              
         case "CLEAR_DAYS":
             return []

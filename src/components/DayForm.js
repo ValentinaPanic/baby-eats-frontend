@@ -19,6 +19,7 @@ const DayForm = ({dayData, updateDay, postDay, userId, history}) => {
             ...dayData,
             userId
         }, history)
+        history.push('/')
     }
        
       const handleFoodsChange = event => {
@@ -33,17 +34,19 @@ const DayForm = ({dayData, updateDay, postDay, userId, history}) => {
         }
         updateDay(updatedFormInfo)
       }
-
+        //  debugger
     return (
+    
         <form onSubmit={handleSubmit}>
-           <select name="mealType" value={dayData.mealType} onChange={handleChange}>
+           <input type="text" name="date" value={dayData.date} onChange={handleChange}/>
+           <select name="mealType" value={dayData.foods.mealType} onChange={handleFoodsChange}>
                 <option>Breakfast</option>
                 <option>Lunch</option>
                 <option>Snack</option>
                 <option>Dinner</option> 
             </select> 
           
-            <input type="date" name="date" value={dayData.date} onChange={handleChange}/>
+            
             <input type="text" name="name" value={dayData.foods.name} onChange={handleFoodsChange}/>
             <input type="submit" />
         </form>

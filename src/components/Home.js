@@ -1,7 +1,4 @@
 import React from 'react'
-import Login from '../components/Login'
-import SignUp from '../components/SignUp'
-import Logout from '../components/Logout'
 import { Link } from "react-router-dom";
 
 

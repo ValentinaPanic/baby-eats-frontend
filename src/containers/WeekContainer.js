@@ -1,16 +1,18 @@
 import React from "react";
 import "../Week.css";
-import { Route, Redirect } from 'react-router-dom'
-import Login from '../components/Login'
-import { startOfWeek,format, addDays, endOfWeek, isSameWeek, isSameDay, toDate, addWeeks, subWeeks } from "date-fns";
+import { startOfWeek,format, addDays, endOfWeek, isSameWeek, isSameDay, addWeeks, subWeeks,toDate } from "date-fns";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
+
 
 
 class Calendar extends React.Component {
   state = {
-    currentWeek: new Date(),
-    selectedDate: new Date(),
-    meals: ["lunch"],
-    foods: ["Avocado"]
+    currentWeek: this.props.newDay.date,
+    selectedDate: this.props.newDay.date,
+    foods: [],
+    dayForm: false
   };
 
   renderHeader() {
@@ -64,10 +66,12 @@ class Calendar extends React.Component {
     let day = startDate;
     let formattedDate = "";
 
+
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
         const cloneDay = day;
+    
         days.push(
           <div
             className={`col cell ${
@@ -78,12 +82,26 @@ class Calendar extends React.Component {
             key={day}
             onClick={() => this.onDateClick(toDate(cloneDay))}
           >
+            
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
-            <div>{this.state.meals}: {this.state.foods}</div>
+            {/* <div>{this.state.meals}: {this.state.foods}</div> */}
+            {/* {this.props.days.map( day =>{
+              if (day.date === day){
+               
+                  const food = day.attributes.foods.map(food =>{
+                    return <div>
+                      {food.meal_type}: {food.name}
+                    </div>
+                  })
+                </div>
+              }
+            })} */}
           </div>
         );
+      
         day = addDays(day, 1);
+        
       }
       
       rows.push(
@@ -91,23 +109,23 @@ class Calendar extends React.Component {
           {days}
         </div>
       );
+
       days = [];
     }
+  
     return <div className="body">{rows}</div>;
   }
 
-  onDateClick = day => {
-    <Redirect to='/login' component={Login}/>
-    console.log()
+  onDateClick = (day) => {
+  
    
     this.setState({
       selectedDate: day,
-      ...this.state.meals,
-      ...this.state.foods
-
-
-    });
-     return(<dib>Hellooaoo</dib>)
+      foods: this.props.newDay.foods,
+      dayForm: true
+    })
+     this.props.history.push('/days/new')
+    console.log(this.state.foods)
   };
 
   nextWeek = () => {
@@ -128,10 +146,18 @@ class Calendar extends React.Component {
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
-     
+    
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  console.log(state.newDayForm.foods)
+  return {
+    days: state.days,
+    newDay: state.newDayForm
 
-export default Calendar;
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Calendar));

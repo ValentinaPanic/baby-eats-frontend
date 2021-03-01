@@ -1,24 +1,20 @@
-const initialState = {
+const initialState =  {
+   
     date: new Date(),
-    mealType: "",
     foods: {
+        mealType: "Breakfast",
         name: ""
     }
 }
 const newDayForm = (state = initialState, action) => {
-    
-    console.log(action)
     switch (action.type) {
-    
-        case "ADD_DAY":
-            return {
-                ...state,
-                [action.day.name]: action.day.value
-            }
-            case "RESET_DAY":
-             
-                return initialState
-      default:
+      
+        case "CHANGE_DAY_FORM":
+            return {...action.dayData}
+               
+        case "RESET_DAY":
+            return []
+        default:
         return state
     }
   }

@@ -1,6 +1,6 @@
 export const updateDay = dayData => {
     return{
-        type: "ADD_DAY",
+        type: "CHANGE_DAY_FORM",
         dayData
 }
 }

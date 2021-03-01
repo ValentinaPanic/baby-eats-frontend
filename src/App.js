@@ -7,10 +7,6 @@ import { connect } from 'react-redux'
 import { getCurrentUser} from './actions/currentUser'
 import { withRouter } from "react-router-dom";
 
-
-import { Route } from 'react-router-dom'
-import SignUp from './components/SignUp'
-
 class App extends Component{
 
   componentDidMount(){
@@ -20,7 +16,7 @@ class App extends Component{
 
 
   render(){
-    const { loggedIn } = this.props
+    // const { loggedIn } = this.props
     return (      
       <div>
           <WelcomePage/> 

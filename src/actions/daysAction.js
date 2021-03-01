@@ -7,11 +7,12 @@ export const setDays = days => {
     }
 }
 export const addDay = day => {
-   
+ console.log("THIS IS ADD DAY ACTION",day)
     return {
         type: "ADD_DAY",
         day
     }
+      
 }
 export const clearDays =() => {
     return {
@@ -33,29 +34,30 @@ export const getDays = () => {
         })
         .then(response => response.json())
         .then(data =>{
-            console.log(data )
                 if (data.error){
                     alert(data.error)
                 } else {
                     dispatch(setDays(data.data))
+                   
                 }
             }
         )
+        .catch(console.log)
     }
 }
 
 export const postDay = (dayData, history) => {
+    // console.log(dayData)
     const dbDayData = {
         day: {
             user_id: dayData.userId,
             date: dayData.date,
-            meal_type: dayData.mealType,
+           
             foods: {
-                name: dayData.foods.name
-
+                name: dayData.foods.name,
+                meal_type: dayData.foods.mealType
         }}
     }
- 
     return dispatch => {
         fetch("http://localhost:3001/days", {
             credentials: "include",
@@ -67,15 +69,17 @@ export const postDay = (dayData, history) => {
         })
         .then(response => response.json())
         .then(data =>{
-         
+
                 if (data.error){
                     alert(data.error)
                 } else {
+                  
                     dispatch(addDay(data.data))
                     dispatch(clearDayForm())
                     history.push('/')
                 }
             }
         )
+        .catch(console.log)
     }
 }
