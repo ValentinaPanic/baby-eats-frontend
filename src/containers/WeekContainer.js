@@ -3,6 +3,7 @@ import "../Week.css";
 import { startOfWeek,format, addDays, endOfWeek, isSameWeek, isSameDay, addWeeks, subWeeks,toDate } from "date-fns";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import {changeDate} from '../actions/newDayForm'
 
 
 
@@ -117,15 +118,16 @@ class Calendar extends React.Component {
   }
 
   onDateClick = (day) => {
-  
+    
+    const dayDate = this.props.changeDate(day)
    
     this.setState({
-      selectedDate: day,
+      selectedDate: dayDate.date,
       foods: this.props.newDay.foods,
       dayForm: true
     })
      this.props.history.push('/days/new')
-    console.log(this.state.foods)
+   
   };
 
   nextWeek = () => {
@@ -152,7 +154,7 @@ class Calendar extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state.newDayForm.foods)
+
   return {
     days: state.days,
     newDay: state.newDayForm
@@ -160,4 +162,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Calendar));
+export default withRouter(connect(mapStateToProps, { changeDate })(Calendar));
