@@ -7,7 +7,6 @@ export const setDays = days => {
     }
 }
 export const addDay = day => {
- console.log("THIS IS ADD DAY ACTION",day)
     return {
         type: "ADD_DAY",
         day

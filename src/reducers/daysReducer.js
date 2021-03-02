@@ -1,23 +1,19 @@
 
 const days = (state = [], action) => {
-    console.log(action)
         switch (action.type) {
         case "SET_DAYS":
             return {
                 days: action.days
             }
-            case "ADD_DAY":   
-           console.log(action)         
+        case "ADD_DAY":         
              return {
                  days: [...state.days, action.day]
-             }
-             
-             
+             }    
         case "CLEAR_DAYS":
-            return []
+            return state
      
-      default:
-        return state
+        default:
+            return state
     }
   }
   export default days
