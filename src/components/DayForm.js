@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from "react-redux"
 import { updateDay } from "../actions/newDayForm"
 import { postDay } from "../actions/daysAction"
+import { format } from "date-fns"
+
 const DayForm = ({dayData, updateDay, postDay, userId, history}) => {
 
     const handleChange = (event) =>{
@@ -24,7 +26,6 @@ const DayForm = ({dayData, updateDay, postDay, userId, history}) => {
        
       const handleFoodsChange = event => {
         const { name, value } = event.target
-        console.log(name)
         const updatedFormInfo = {
           ...dayData,
           foods: {
@@ -35,10 +36,15 @@ const DayForm = ({dayData, updateDay, postDay, userId, history}) => {
         updateDay(updatedFormInfo)
       }
         //  debugger
-    return (
-    
+        const dayFormat = "yyyy-MM-dd"
+        const dateForm = format(dayData.date, dayFormat)
+        return (
+      
+      <>
+     
         <form onSubmit={handleSubmit}>
-           <input type="text" name="date" value={dayData.date} onChange={handleChange}/>
+          
+           <input type="text" name="date" value={dateForm} onChange={handleChange}/>
            <select name="mealType" value={dayData.foods.mealType} onChange={handleFoodsChange}>
                 <option>Breakfast</option>
                 <option>Lunch</option>
@@ -50,6 +56,7 @@ const DayForm = ({dayData, updateDay, postDay, userId, history}) => {
             <input type="text" name="name" value={dayData.foods.name} onChange={handleFoodsChange}/>
             <input type="submit" />
         </form>
+        </>
     )
 }
 const mapStateToProps = state =>{
