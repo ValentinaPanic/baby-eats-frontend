@@ -10,3 +10,9 @@ export const clearDayForm = () => {
         type: "RESET_DAY",
 }
 }
+export const changeDate = (date) => {  
+    return{
+        type: "CHANGE_DATE",
+        date
+}
+}
