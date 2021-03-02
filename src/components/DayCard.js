@@ -1,28 +1,27 @@
  import React from "react";
+ import { format } from "date-fns"
 
-const DayCard = ({days}) => {
-
-  return(
-    <div>
-      { days.days && days.days.map( day =>{
-       
-        const dayFood = day && day.attributes.foods.map(food =>{
-          // console.log(food)
-              return( <li key={food.id}><strong>{food.meal_type}</strong>- {food.name}</li> )
-      
-        }) 
-        if (day){
-             return(
-          <div key={day.id}>
-            {day.attributes.date} -{dayFood}
-          </div>
-        )
-        }
-       
-      })}
+const DayCard = ({days, today}) => {
+  const dayFormat = "yyyy-MM-dd"
+  const formattedDate = format(today,dayFormat)
+     return(
+          <div>
+              { days.days && days.days.filter(day => day.attributes.date ===     formattedDate).map( day => {
+                
+                return (day.attributes.foods.map(food =>{
+                
+                  return (
+                    <li key={day.id}> <strong>{food.meal_type}</strong> - {food.name}</li>
+                    )
+                }))
+              })
+                  
+                }
+    
+         
     </div>
-  )
+  
+     )}
 
-}
 
 export default DayCard
