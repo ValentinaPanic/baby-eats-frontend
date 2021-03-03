@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { BrowserRouter as Router} from 'react-router-dom'
 
-import newDayForm from './reducers/newDayForm'
+import dayForm from './reducers/dayForm'
 import days from './reducers/daysReducer'
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
@@ -19,7 +19,7 @@ const reducers = combineReducers({
   currentUser,
   loginForm,
   signUpForm,
-  newDayForm,
+  dayForm,
   days,
 })
 const store = createStore(reducers, composeEnhancer(applyMiddleware(thunk)))
@@ -27,7 +27,7 @@ const store = createStore(reducers, composeEnhancer(applyMiddleware(thunk)))
 ReactDOM.render(
   <Provider store={store}>
     <Router> 
-      <App />
+      <App className="App"/>
     </Router>
   </Provider>,
   document.getElementById('root')

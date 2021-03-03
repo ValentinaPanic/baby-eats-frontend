@@ -1,4 +1,4 @@
-import { clearDayForm } from "./newDayForm";
+import { clearDayForm } from "./dayForm";
 export const setDays = days => {
    
     return {
