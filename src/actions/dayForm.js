@@ -18,12 +18,14 @@ export const changeDate = (date) => {
 }
 
 export const setFormDataForEdit = day => {
+  //  console.log("in edit action", day.attributes.date)
     const dayFormData = {
       date: day.attributes.date,
       mealType: day.attributes.foods.meal_type,
       name: day.attributes.foods.name
     }
     return {
+      
       type: "SET_FORM_DATA_FOR_EDIT",
       dayFormData
     }

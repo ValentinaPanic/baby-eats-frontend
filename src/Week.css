@@ -29,6 +29,7 @@
   --border-color: #eee;
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
+  
 }
 
 
@@ -36,16 +37,22 @@
 
 * {
   box-sizing: border-box;
+
 }
 
 body {
+ 
     font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     font-size: 1em;
     font-weight: 300;
     line-height: 1.5;
     color: var(--text-color);
-    background: var(--bg-color);
-    position: relative;
+    background: var(--bg-color); 
+    /* background-image: url("images/baby-food-pic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+    position: relative; 
 }
 
 header {
@@ -68,6 +75,7 @@ header #logo .icon {
 }
 
 main {
+
   display: block;
   margin: 0 auto;
   margin-top: 5em;
@@ -115,11 +123,14 @@ main {
 /* Calendar */
 
 .calendar {
-  display: block;
+
+  display: grid;
   position: relative;
-  width: 100%;
+  width: 90%;
   background: var(--neutral-color);
   border: 1px solid var(--border-color);
+  /* padding: 10px; */
+  margin: auto;
 }
 
 .calendar .header {

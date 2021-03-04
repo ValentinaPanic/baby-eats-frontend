@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import  WelcomePage  from './containers/WelcomePageContainer'
+import "./App.css";
 // import  WeekContainer  from './containers/WeekContainer'
 // import Home from './components/Home'
 

@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from "react-redux"
+import { format } from "date-fns";
 import { createDay } from "../actions/dayForm"
-// import { postDay } from "../actions/daysAction"
-import { format } from "date-fns"
-
-const DayForm = ({dayData, createDay, userId, history, handleSubmit}) => {
+import { postDay } from "../actions/daysAction"
+const DayForm = ({dayData, createDay, postDay, userId, history}) => {
 
     const handleChange = (event) =>{
         const { name,value} = event.target 
@@ -14,18 +13,19 @@ const DayForm = ({dayData, createDay, userId, history, handleSubmit}) => {
           }
         createDay(updatedFormInfo) 
     }
-    // const handleSubmit = (event) => {
-    //     event.preventDefault()
+    const handleSubmit = (event) => {
+        event.preventDefault()
         
-    //     postDay({
-    //         ...dayData,
-    //         userId
-    //     }, history)
-    //     history.push('/')
-    // }
+        postDay({
+            ...dayData,
+            userId
+        }, history)
+        history.push('/')
+    }
        
       const handleFoodsChange = event => {
         const { name, value } = event.target
+        console.log(name)
         const updatedFormInfo = {
           ...dayData,
           foods: {
@@ -33,17 +33,14 @@ const DayForm = ({dayData, createDay, userId, history, handleSubmit}) => {
             [name]: value
           }
         }
-       createDay(updatedFormInfo)
+        createDay(updatedFormInfo)
       }
-     
+        //  debugger
         const dayFormat = "yyyy-MM-dd"
-        const dateForm = dayData && format(dayData.date, dayFormat)
-        return (
-      
-      <>
-        <form onSubmit={event =>{
-          handleSubmit(event, dayData, userId)}}>
-          
+        const dateForm = format(dayData.date, dayFormat)
+    return (
+    
+        <form onSubmit={handleSubmit}>
            <input type="text" name="date" value={dateForm} onChange={handleChange}/>
            <select name="mealType" value={dayData.foods.mealType} onChange={handleFoodsChange}>
                 <option>Breakfast</option>
@@ -56,11 +53,9 @@ const DayForm = ({dayData, createDay, userId, history, handleSubmit}) => {
             <input type="text" name="name" value={dayData.foods.name} onChange={handleFoodsChange}/>
             <input type="submit" />
         </form>
-        </>
     )
 }
 const mapStateToProps = state =>{
-  console.log(state)
     const userId = state.currentUser ? state.currentUser.id : ""
     return {
         dayData: state.dayForm,
@@ -68,4 +63,4 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps, { createDay })(DayForm)
+export default connect(mapStateToProps, {createDay, postDay})(DayForm)
