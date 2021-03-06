@@ -21,10 +21,11 @@ class App extends Component{
 
  }
   render(){
-    // const { loggedIn } = this.props
+    const { loggedIn } = this.props
     return (      
       <div>
          <Switch>
+                <Route exact path='/' render={()=> loggedIn ? <HomePageContainer/> : null} />
                 <Route exact path = "/home" component={HomePageContainer}/> 
                 <Route exact path = "/current-week" component={WeekContainer}/>
                 <Route exact path = "/login" component={Login}/>  
