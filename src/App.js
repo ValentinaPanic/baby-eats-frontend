@@ -1,12 +1,18 @@
-import React, { Component } from 'react'
-import  WelcomePage  from './containers/WelcomePageContainer'
 import "./App.css";
-// import  WeekContainer  from './containers/WeekContainer'
-// import Home from './components/Home'
-
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Route, withRouter, Switch } from "react-router-dom";
+import  WelcomePage  from './containers/HomePageContainer'
+import EditDayContainer from "./containers/EditDayContainer";
 import { getCurrentUser} from './actions/currentUser'
-import { withRouter } from "react-router-dom";
+import Footer from './components/Footer'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
+import DayForm from './components/DayForm';
+import DayCard from "./components/DayCard";
+import HomePageContainer from "./containers/HomePageContainer";
+import WeekContainer from './containers/WeekContainer';
+
 
 class App extends Component{
 
@@ -14,14 +20,31 @@ class App extends Component{
     this.props.getCurrentUser()
 
  }
-
-
   render(){
     // const { loggedIn } = this.props
     return (      
       <div>
+         <Switch>
+                <Route exact path = "/home" component={HomePageContainer}/> 
+                <Route exact path = "/current-week" component={WeekContainer}/>
+                <Route exact path = "/login" component={Login}/>  
+                <Route exact path = "/signup" component={SignUp}/> 
+                <Route exact path = "/days/new" component={DayForm}/>
+                <Route exact path = "/days/:id/" render={props => {
+                     const day = this.props.days && this.props.days.find(day => day.id === props.match.params.id)
+
+                    return <DayCard day={day} {...props}/>}}
+                    
+                />
+                <Route exact path = "/days/:id/edit" render={props => {
+                     const day = this.props.days && this.props.days.find(day => day.id === props.match.params.id)
+                        console.log(day)
+                       return <EditDayContainer day={day} {...props}/>}}
+                    
+                />
+          </Switch>
           <WelcomePage/> 
-       
+          <Footer/>
       </div>
 
     )

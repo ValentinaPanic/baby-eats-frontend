@@ -23,7 +23,8 @@ const dayForm = (state = initialState, action) => {
         case "RESET_DAY":
             return initialState
         case "SET_FORM_DATA_FOR_EDIT":
-            return action.dayFormData
+            console.log(action)
+            return action.dayFormData.dayData
         default:
             return state
     }

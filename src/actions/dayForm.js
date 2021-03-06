@@ -17,12 +17,13 @@ export const changeDate = (date) => {
 }
 }
 
-export const setFormDataForEdit = day => {
-  //  console.log("in edit action", day.attributes.date)
+export const setFormDataForEdit = dayData => {
+   console.log("in edit action", dayData)
     const dayFormData = {
-      date: day.attributes.date,
-      mealType: day.attributes.foods.meal_type,
-      name: day.attributes.foods.name
+       dayData
+      // date: day.attributes.date,
+      // mealType: day.attributes.foods.meal_type,
+      // name: day.attributes.foods.name
     }
     return {
       

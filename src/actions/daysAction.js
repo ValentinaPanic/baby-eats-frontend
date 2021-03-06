@@ -14,6 +14,7 @@ export const addDay = day => {
       
 }
 export const editDaySuccess = day => {
+    console.log(day)
     return {
         type: "EDIT_DAY",
         day
@@ -21,7 +22,6 @@ export const editDaySuccess = day => {
       
 }
 export const deleteDaySuccess = dayId => {
-    console.log("IN ACTION")
     return {
         type: "DELETE_DAY",
         dayId
@@ -90,7 +90,7 @@ export const postDay = (dayData, history) => {
                   
                     dispatch(addDay(data.data))
                     dispatch(clearDayForm())
-                    history.push('/')
+                    history.push('/home')
                 }
             }
         )
@@ -156,7 +156,7 @@ export const deleteDay = (dayId, history) => {
                 } else {
                   
                     dispatch(deleteDaySuccess(dayId))
-                    history.push(`/days`)
+                    history.push(`/home`)
                 }
             }
         )

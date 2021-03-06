@@ -1,12 +1,9 @@
 import React from "react";
 import "../Week.css";
-import { startOfWeek,format, addDays, endOfWeek, isSameWeek, isSameDay, addWeeks, subWeeks,toDate } from "date-fns";
+import { startOfWeek,format, addDays, endOfWeek, isSameWeek, isSameDay, addWeeks, subWeeks,toDate, parseISO } from "date-fns";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { changeDate } from '../actions/dayForm'
-
-
-
 
 class Calendar extends React.Component {
 
@@ -17,7 +14,7 @@ class Calendar extends React.Component {
   };
 
   renderHeader() {
-    console.log(this.state.selectedDate)
+    // console.log(this.state.selectedDate)
     const dateFormat = "MMMM yyyy";
 
     return (
@@ -68,7 +65,6 @@ class Calendar extends React.Component {
     let day = startDate;
     let formattedDate = "";
 
-
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
@@ -82,7 +78,7 @@ class Calendar extends React.Component {
                 : isSameDay(day, selectedDate) ? "selected" : ""
             }`}
             key={day}
-            onClick={() => this.onDateClick(cloneDay)}
+            onClick={() => this.onDateClick(toDate(cloneDay))}
           >
             
             <span className="number">{formattedDate}</span>
@@ -108,15 +104,14 @@ class Calendar extends React.Component {
   }
 
   onDateClick = (day) => {
-   console.log(day)
+
     const dayDate = this.props.changeDate(day)
-    console.log(dayDate)
     this.setState({
       selectedDate: dayDate.date,
       foods: this.props.newDay.foods
      
     })
-     this.props.history.push('/days/new')
+    //  this.props.history.push('/days/new')
    
   };
 
@@ -144,7 +139,7 @@ class Calendar extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state.dayForm.date)
+  console.log(state.dayForm)
   return {
     days: state.days,
     newDay: state.dayForm

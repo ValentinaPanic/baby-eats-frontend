@@ -8,7 +8,7 @@ const DayCard = ({days, today}) => {
   const formattedDate = format(today,dayFormat)
   
      return(
-        <div className="col col-center">
+        <div >
            { days && days.filter(day => 
            day.attributes.date === formattedDate).map( day => { 
                return (day.attributes.foods.map(food =>{
