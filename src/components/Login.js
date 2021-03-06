@@ -1,7 +1,10 @@
 import React from 'react'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux'
 import { updateLoginForm } from '../actions/loginForm'
 import { login } from '../actions/currentUser'
+import { Container } from 'react-bootstrap'
 
  const Login = ({loginForm, updateLoginForm, login, history}) => {
 
@@ -18,11 +21,22 @@ import { login } from '../actions/currentUser'
     }
     
     return(
-        <form onSubmit={handleSubmit}>
-            <input type="text" onChange={handleChange} name="username" value={loginForm.username} placeholder="username"/>
-            <input type="text" onChange={handleChange} name="password" value={loginForm.password} placeholder="password"/>
-            <input type="submit" name="login" value="Log In"/>
-        </form>
+       
+        <Container fluid="sm">
+            <Form className="justify-content-md-center"  onSubmit={handleSubmit}>
+                <Form.Group >
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control as="input" type="text" placeholder="Enter username" onChange={handleChange} name="username" value={loginForm.username} />
+                </Form.Group>
+                <Form.Group >
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control as="input" type="password" placeholder="Password" onChange={handleChange} name="password" value={loginForm.password}/>
+                    <Button variant="primary" type="submit">
+                        Login
+                    </Button>
+                </Form.Group> 
+            </Form> 
+        </Container>
     )
 
 }
