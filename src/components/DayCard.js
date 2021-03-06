@@ -9,6 +9,7 @@ const DayCard = ({days, today}) => {
   
      return(
         <div >
+            <h3 style={{textAlign:"center"}}> Meals for {formattedDate}</h3>
            { days && days.filter(day => 
            day.attributes.date === formattedDate).map( day => { 
                return (day.attributes.foods.map(food =>{
