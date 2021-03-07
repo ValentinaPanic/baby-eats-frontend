@@ -8,13 +8,12 @@ import { changeDate } from '../actions/dayForm'
 class Calendar extends React.Component {
 
   state = {
-    currentWeek: this.props.newDay.date,
-    selectedDate: this.props.newDay.date
+    currentWeek: new Date(this.props.newDay.date),
+    selectedDate: new Date(this.props.newDay.date)
 
   };
 
   renderHeader() {
-    // console.log(this.state.selectedDate)
     const dateFormat = "MMMM yyyy";
 
     return (
@@ -79,8 +78,7 @@ class Calendar extends React.Component {
             }`}
             key={day}
             onClick={() => this.onDateClick(toDate(cloneDay))}
-          >
-            
+          > 
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
     
@@ -107,11 +105,10 @@ class Calendar extends React.Component {
 
     const dayDate = this.props.changeDate(day)
     this.setState({
-      selectedDate: dayDate.date,
-      foods: this.props.newDay.foods
+       selectedDate: dayDate.date
      
     })
-    //  this.props.history.push('/days/new')
+     
    
   };
 
@@ -133,13 +130,11 @@ class Calendar extends React.Component {
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
-    
       </div>
     );
   }
 }
 const mapStateToProps = state => {
-  console.log(state.dayForm)
   return {
     days: state.days,
     newDay: state.dayForm

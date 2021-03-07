@@ -61,7 +61,6 @@ export const getDays = () => {
 }
 
 export const postDay = (dayData, history) => {
-    // console.log(dayData)
     const dbDayData = {
         day: {
             user_id: dayData.userId,
@@ -156,7 +155,7 @@ export const deleteDay = (dayId, history) => {
                 } else {
                   
                     dispatch(deleteDaySuccess(dayId))
-                    history.push(`/home`)
+                    history.push(`/current-week`)
                 }
             }
         )

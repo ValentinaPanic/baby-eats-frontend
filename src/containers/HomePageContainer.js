@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Logout from '../components/Logout'
 import WelcomePage from "../components/WelcomePage";
 import { connect } from 'react-redux'
 import { getCurrentUser} from '../actions/currentUser'
@@ -22,9 +21,10 @@ import NavBar from "../components/NavBar";
                 {loggedIn ? 
                 <>
                 <NavBar /> 
-                <DayForm/>
-                <WeekContainer/>
-                <DayCard days={days} today={today}/> 
+                <br/>
+                 <WeekContainer/> 
+                <DayForm/> 
+               <DayCard days={days} today={today}/>
                 </>
                  : <WelcomePage/>}
             </div>
@@ -33,11 +33,12 @@ import NavBar from "../components/NavBar";
     
  }
  const mapStateToProps = state => {
- 
+        const today = new Date(state.dayForm.date)
+        console.log(today)
     return{
         loggedIn: !!state.currentUser,
         days: state.days.days,
-        today: state.dayForm.date
+        today
 
     }
    

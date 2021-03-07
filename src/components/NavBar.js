@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom'
 
 const NavBar = (props) => {
     return (
-        
+        <>
           <Navbar bg="light" variant="dark" fixed="top" expand="true">
             <div className="mr-auto"> 
             <NavLink href="#home" exact activeClassName="active" to='/home'> Home </NavLink>
@@ -16,15 +16,16 @@ const NavBar = (props) => {
              {props.loggedIn  ? 
              <Logout/>  
               
-            
-            : null}
+              : null}
             </div>
          </Navbar>
-   
-
+        <br/>
+        <br/>
+        <br/>
+      </>
     )}
 const mapStateToProps = state => {
-    console.log(state.currentUser)
+    
     return{
         loggedIn: !!state.currentUser,
         currentUser: state.currentUser,

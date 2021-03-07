@@ -8,7 +8,6 @@ import { createDay } from "../actions/dayForm"
 import { postDay } from "../actions/daysAction"
 
 const DayForm = ({dayData, createDay, postDay, userId, history}) => {
-console.log(history)
     const handleChange = (event) =>{
         const { name,value} = event.target 
         const updatedFormInfo = {
@@ -38,9 +37,12 @@ console.log(history)
         }
         createDay(updatedFormInfo)
       }
-        //  debugger
+        
         const dayFormat = "yyyy-MM-dd"
-        const dateForm = format(dayData.date, dayFormat)
+        const newDate = new Date(dayData.date)
+        
+        const dateForm = format(newDate, dayFormat)
+        //  debugger
     return (
       <Form className="justify-content-md-center" inline onSubmit={handleSubmit}>
         <Form.Group >
@@ -63,6 +65,7 @@ console.log(history)
     )
 }
 const mapStateToProps = state =>{
+  console.log(state.dayForm.date)
     const userId = state.currentUser ? state.currentUser.id : ""
     return {
         dayData: state.dayForm,
