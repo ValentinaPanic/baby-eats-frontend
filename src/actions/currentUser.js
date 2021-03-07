@@ -32,7 +32,7 @@ export const clearCurrentUser = () => {
                     } else {
                         dispatch(setCurrentUser(user.data))
                         dispatch(resetForm())
-                        history.push("/")
+                        history.push("/home")
                     }
             }
             )
@@ -60,7 +60,7 @@ export const clearCurrentUser = () => {
                     } else {
                         dispatch(setCurrentUser(user.data))
                         dispatch(resetSignUpForm())
-                        history.push("/")
+                        history.push("/home")
                     }
             }
             )
