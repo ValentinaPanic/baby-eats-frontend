@@ -45,14 +45,14 @@ body {
     font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     font-size: large;
     /* font-weight: 300; */
-    /* line-height: 1.5; */
+    line-height: normal;
     color: var(--text-color);
     background: var(--bg-color); 
-    /* background-image: url("images/baby.png"); */
+    /* background-image: url("images/mother-holding-baby-drawing.png"); */
     background-color: #b6e9f8f8;
 
     background-repeat: no-repeat;
-    background-size: cover;
+    /* background-size: 10rem; */
     background-position: center;
     position: relative; 
 }
@@ -130,12 +130,13 @@ header #logo .icon {
   position: relative;
   width: 70%;
   background: var(--neutral-color);
-  /* border: 1px solid var(--border-color); */
-  /* padding: 10px; */
+  border: 1px solid var(--border-color);
+  padding: 10px;
   margin: auto;
 }
 
 .calendar .header {
+
   text-transform: uppercase;
   font-weight: 700;
   font-size: 115%;
@@ -173,7 +174,7 @@ header #logo .icon {
 
 .calendar .body .cell {
   position: relative;
-  height: 5em;
+  height: 3em;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
   cursor: pointer;

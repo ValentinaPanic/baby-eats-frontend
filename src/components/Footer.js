@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <Navbar bg="light" variant="dark" fixed="bottom" expand="lg" >
         <h3 style={style}>
-         Welcome to BabyEats <br></br>
+         BabyEats <br></br>
          We are here to help you organize your baby meals.   
         </h3>  
         </Navbar>
