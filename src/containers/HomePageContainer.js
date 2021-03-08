@@ -34,7 +34,7 @@ import NavBar from "../components/NavBar";
  }
  const mapStateToProps = state => {
         const today = new Date(state.dayForm.date)
-        console.log(today)
+        console.log(typeof today)
     return{
         loggedIn: !!state.currentUser,
         days: state.days.days,
