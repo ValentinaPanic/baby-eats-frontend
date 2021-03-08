@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { updateSignUpForm } from '../actions/signUpForm'
 import { signUp } from '../actions/currentUser'
+import { Link } from 'react-router-dom'
 
  const SignUp = ({signUpForm, updateSignUpForm, signUp, history}) => {
 
@@ -23,6 +24,7 @@ import { signUp } from '../actions/currentUser'
     return(
 
         <Container fluid="sm">
+          <Link to="/">Go Back</Link>
         <Form className="justify-content-md-center"  onSubmit={handleSubmit}>
 
             <Form.Group >

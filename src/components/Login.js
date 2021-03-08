@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { updateLoginForm } from '../actions/loginForm'
 import { login } from '../actions/currentUser'
 import { Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
  const Login = ({loginForm, updateLoginForm, login, history}) => {
 
@@ -23,6 +24,7 @@ import { Container } from 'react-bootstrap'
     return(
        
         <Container fluid="sm">
+             <Link to="/">Go Back</Link>
             <Form className="justify-content-md-center"  onSubmit={handleSubmit}>
                 <Form.Group >
                     <Form.Label>Username</Form.Label>
