@@ -13,16 +13,17 @@ const FoodCard = ({food, deleteDay, history}) => {
     }
   
     return food &&
-         <>
+        
            
            <Container fluid="sm">
             <ListGroup className="justify-content-md-center" >
-                <ListGroup.Item action variant="danger" key={food.id} > <strong>{food.meal_type}</strong> - {food.name} 
-                   <span>
-                <Button onClick={handleClick} variant="info" size="sm"> Delete </Button></span></ListGroup.Item>
+                <span><ListGroup.Item  variant="danger" key={food.id} > <strong>{food.meal_type} - {food.name} </strong>
+                
+                <Button onClick={handleClick} variant="info" size="sm"> Delete </Button>
+                </ListGroup.Item></span>
               </ListGroup>  
             </Container>       
-        </>
+     
        
 }
 
