@@ -44,17 +44,15 @@ body {
  
     font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     font-size: large;
-    /* font-weight: 300; */
+    font-weight: 300;
     line-height: normal;
     color: var(--text-color);
-    background: var(--bg-color); 
-    /* background-image: url("images/mother-holding-baby-drawing.png"); */
-    background-color: #b6e9f8f8;
-
-    background-repeat: no-repeat;
-    /* background-size: 10rem; */
-    background-position: center;
-    position: relative; 
+    /* background: var(--bg-color);  */
+  background-color: #b6e9f8f8;
+    background-image: url("images/baby\ boss.jpg");
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+  background-position: bottom center; 
 }
 
 header {
