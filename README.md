@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# BabyEats Application
+ BabyEats application is built usinf Rails API for the backend and React-Redux for the frontend.
+ This application is meant for busy moms. 
+ Users can create daily meals as well as click on any day in the calendar to check if the meals were created for a chosen day.
+ A simple design supports a quick use.
+ 
+
+ >[Rails API Backend](https://github.com/ValentinaPanic/baby-eats-backend)
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
