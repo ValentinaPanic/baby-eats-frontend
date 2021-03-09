@@ -9,7 +9,7 @@ const NavBar = (props) => {
         <>
           <Navbar bg="light" variant="dark" fixed="top" expand="true">
             <div className="mr-auto"> 
-            <NavLink href="#home" exact activeClassName="active" to='/home'> Home </NavLink>
+            <NavLink exact activeClassName="active" to='/home'> Home </NavLink>
             <NavLink exact activeClassName="active" to='/current-week'> Current Week </NavLink>
             <NavLink exact activeClassName="active" to='/days/new'> Create Meal </NavLink>
         

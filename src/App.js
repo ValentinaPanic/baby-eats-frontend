@@ -27,17 +27,17 @@ class App extends Component{
       <div>
          <Switch>
                 <Route exact path='/' render={()=> loggedIn ? <HomePageContainer/> : <WelcomePage/>} />
-                <Route exact path = "/home" component={HomePageContainer}/> 
-                <Route exact path = "/current-week"  render={props => <> <br/><br/><br/><WeekContainer {...props}/></>}/>
+                <Route exact path = "/current-week" component={HomePageContainer}/> 
+                <Route exact path = "/home"  render={props => <> <br/><br/><br/><WeekContainer {...props}/></>}/>
                 <Route exact path = "/login" component={Login}/>  
                 <Route exact path = "/signup" component={SignUp}/> 
                 <Route exact path = "/days/new" render={props => <> <br/><br/><br/><DayForm {...props}/></>}/>
-                <Route exact path = "/days/:id/" render={props => {
+                {/* <Route exact path = "/days/:id/" render={props => {
                      const day = this.props.days && this.props.days.find(day => day.id === props.match.params.id)
 
                     return <DayCard day={day} {...props}/>}}
                     
-                />
+                /> */}
                 {/* <Route exact path = "/days/:id/edit" render={props => {
                      const day = this.props.days && this.props.days.find(day => day.id === props.match.params.id)
                         console.log(day)
@@ -46,7 +46,7 @@ class App extends Component{
                 /> */}
           </Switch>
           {loggedIn ? <NavBar/> : null}
-          {/* <WelcomePage/>  */}
+  
           <Footer/>
       </div>
 

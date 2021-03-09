@@ -1,6 +1,5 @@
  import React from "react";
- import { format } from "date-fns"
-//  import format from 'date-fns/format'
+ import { format } from "date-fns";
 import FoodCard from "./FoodCard";
 
 const DayCard = ({days, today}) => {

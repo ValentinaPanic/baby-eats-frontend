@@ -89,7 +89,7 @@ export const postDay = (dayData, history) => {
                   
                     dispatch(addDay(data.data))
                     dispatch(clearDayForm())
-                    history.push('/home')
+                    history.push('/current-week')
                 }
             }
         )

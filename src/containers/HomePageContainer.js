@@ -24,7 +24,7 @@ import NavBar from "../components/NavBar";
                 <br/>
                  <WeekContainer/> 
                 <DayForm/> 
-               <DayCard days={days} today={today}/>
+                <DayCard days={days} today={today}/>
                 </>
                  : <WelcomePage/>}
             </div>
@@ -34,7 +34,6 @@ import NavBar from "../components/NavBar";
  }
  const mapStateToProps = state => {
         const today = new Date(state.dayForm.date)
-        console.log(typeof today)
     return{
         loggedIn: !!state.currentUser,
         days: state.days.days,
