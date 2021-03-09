@@ -1,6 +1,6 @@
 import React from "react";
 import "../Week.css";
-import { startOfWeek,format, addDays, endOfWeek, isSameWeek, isSameDay, addWeeks, subWeeks,toDate, parseISO } from "date-fns";
+import { startOfWeek,format, addDays, endOfWeek, isSameWeek, isSameDay, addWeeks, subWeeks,toDate } from "date-fns";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { changeDate } from '../actions/dayForm'
@@ -8,8 +8,8 @@ import { changeDate } from '../actions/dayForm'
 class Calendar extends React.Component {
 
   state = {
-    currentWeek: new Date(this.props.newDay.date),
-    selectedDate: new Date(this.props.newDay.date)
+    currentWeek: new Date(),
+    selectedDate: new Date()
 
   };
 
@@ -68,7 +68,7 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
         const cloneDay = day;
-        
+        console.log(typeof cloneDay)
         days.push(
           <div
             className={`col cell ${
@@ -102,12 +102,12 @@ class Calendar extends React.Component {
   }
 
   onDateClick = (day) => {
-
-    const dayDate = this.props.changeDate(day)
-    this.setState({
-       selectedDate: dayDate.date
+    // console.log(typeof day)
+  this.props.changeDate(day)
+    // this.setState({
+    //    selectedDate: dayDate.date
      
-    })
+    // })
      
    
   };
@@ -135,6 +135,7 @@ class Calendar extends React.Component {
   }
 }
 const mapStateToProps = state => {
+
   return {
     days: state.days,
     newDay: state.dayForm
