@@ -13,6 +13,8 @@ import days from './reducers/daysReducer'
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
 import signUpForm from './reducers/signUpForm'
+import listForm from './reducers/listForm'
+import lists from './reducers/listReducers'
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose 
 
@@ -22,6 +24,8 @@ const reducers = combineReducers({
   signUpForm,
   dayForm,
   days,
+  listForm,
+  lists
 })
 const store = createStore(reducers, composeEnhancer(applyMiddleware(thunk)))
 
