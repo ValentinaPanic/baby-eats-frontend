@@ -3,13 +3,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, withRouter, Switch } from "react-router-dom";
 import  WelcomePage  from './containers/HomePageContainer'
-// import EditDayContainer from "./containers/EditDayContainer";
 import { getCurrentUser} from './actions/currentUser'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import DayForm from './components/DayForm';
-import DayCard from "./components/DayCard";
+import ShoppingList from './containers/ShoppingList';
 import HomePageContainer from "./containers/HomePageContainer";
 import WeekContainer from './containers/WeekContainer';
 import NavBar  from "./components/NavBar";
@@ -32,18 +31,8 @@ class App extends Component{
                 <Route exact path = "/login" component={Login}/>  
                 <Route exact path = "/signup" component={SignUp}/> 
                 <Route exact path = "/days/new" render={props => <> <br/><br/><br/><DayForm {...props}/></>}/>
-                {/* <Route exact path = "/days/:id/" render={props => {
-                     const day = this.props.days && this.props.days.find(day => day.id === props.match.params.id)
-
-                    return <DayCard day={day} {...props}/>}}
-                    
-                /> */}
-                {/* <Route exact path = "/days/:id/edit" render={props => {
-                     const day = this.props.days && this.props.days.find(day => day.id === props.match.params.id)
-                        console.log(day)
-                       return <EditDayContainer day={day} {...props}/>}}
-                    
-                /> */}
+                <Route exact path = "/lists" render={props => <> <br/><br/><br/><ShoppingList {...props}/></>}/>
+            
           </Switch>
           {loggedIn ? <NavBar/> : null}
   
