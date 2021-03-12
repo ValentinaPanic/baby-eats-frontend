@@ -15,16 +15,15 @@ const dayForm = (state = initialState, action) => {
              
             return {...action.dayData}
         case "CHANGE_DATE":
-            console.log(action)
             return {
                 ...state,
                 date: action.date
             }   
         case "RESET_DAY":
             return initialState
-        case "SET_FORM_DATA_FOR_EDIT":
-            console.log(action)
-            return action.dayFormData.dayData
+        // case "SET_FORM_DATA_FOR_EDIT":
+        //     // console.log(action)
+        //     return action.dayFormData.dayData
         default:
             return state
     }

@@ -13,10 +13,8 @@ const FoodCard = ({food, deleteDay, history}) => {
     }
   
     return food &&
-        
-           
-           <Container fluid="sm">
-            <ListGroup className="justify-content-md-center" >
+            <Container fluid="sm" style={{width:"50%"}}>
+             <ListGroup className="justify-content-md-center" >
                 <span><ListGroup.Item  variant="danger" key={food.id} > <strong>{food.meal_type} - {food.name} </strong>
                 
                 <Button onClick={handleClick} variant="info" size="sm"> Delete </Button>

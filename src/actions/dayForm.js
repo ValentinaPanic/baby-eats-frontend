@@ -17,17 +17,17 @@ export const changeDate = (date) => {
 }
 }
 
-export const setFormDataForEdit = dayData => {
-   console.log("in edit action", dayData)
-    const dayFormData = {
-       dayData
-      // date: day.attributes.date,
-      // mealType: day.attributes.foods.meal_type,
-      // name: day.attributes.foods.name
-    }
-    return {
+// export const setFormDataForEdit = dayData => {
+//    console.log("in edit action", dayData)
+//     const dayFormData = {
+//        dayData
+//       // date: day.attributes.date,
+//       // mealType: day.attributes.foods.meal_type,
+//       // name: day.attributes.foods.name
+//     }
+//     return {
       
-      type: "SET_FORM_DATA_FOR_EDIT",
-      dayFormData
-    }
-  }
+//       type: "SET_FORM_DATA_FOR_EDIT",
+//       dayFormData
+//     }
+//   }

@@ -3,11 +3,12 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { connect } from "react-redux"
 import {  withRouter} from 'react-router-dom';
-// import { format } from "date-fns";
+import { format } from "date-fns";
 import { createDay } from "../actions/dayForm"
 import { postDay } from "../actions/daysAction"
 
 const DayForm = ({dayData, createDay, postDay, userId, history}) => {
+
     const handleChange = (event) =>{
         const { name,value} = event.target 
         const updatedFormInfo = {
@@ -37,16 +38,15 @@ const DayForm = ({dayData, createDay, postDay, userId, history}) => {
         }
         createDay(updatedFormInfo)
       }
-        
-        // const dayFormat = "yyyy-MM-dd"
-        // const newDate = new Date(dayData.date)
-        
-        // const dateForm = format(newDate, dayFormat)
+
+        const dt = new Date(dayData.date)
+             const dayFormat = "yyyy-MM-dd"  
+        const dateForm = format(dt, dayFormat)
         //  debugger
     return (
       <Form className="justify-content-md-center" inline onSubmit={handleSubmit}>
         <Form.Group >
-           <Form.Control as='input' type="date" name="date" value={dayData.date} onChange={handleChange}/>
+           <Form.Control as='input' type="date" name="date" value={dateForm} onChange={handleChange}/>
            <Form.Control as="select" className="my-1 mr-sm-2" id="inlineFormCustomSelectPref" custom
                 name="mealType" value={dayData.foods.mealType} onChange={handleFoodsChange}>
                 <option>Breakfast</option>
@@ -65,7 +65,6 @@ const DayForm = ({dayData, createDay, postDay, userId, history}) => {
     )
 }
 const mapStateToProps = state =>{
-  console.log(state.dayForm.date)
     const userId = state.currentUser ? state.currentUser.id : ""
     return {
         dayData: state.dayForm,

@@ -1,6 +1,7 @@
 import { resetForm } from './loginForm'
 import { resetSignUpForm } from './signUpForm'
 import { getDays, clearDays } from './daysAction'
+import {  clearLists } from './listActions'
 export const setCurrentUser = user => {
     return {
         type: "SET_CURRENT_USER",
@@ -74,6 +75,7 @@ export const clearCurrentUser = () => {
         return dispatch =>{
             dispatch(clearCurrentUser())
             dispatch(clearDays())
+            dispatch(clearLists())
 
             return fetch( "http://localhost:3001/logout",{
                 credentials: "include",
@@ -100,6 +102,7 @@ export const clearCurrentUser = () => {
                     } else {
                         dispatch(setCurrentUser(user.data))
                         dispatch(getDays())
+                        
                     }
             }
             )

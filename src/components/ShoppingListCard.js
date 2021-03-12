@@ -15,14 +15,14 @@ import { deleteList } from '../actions/listActions'
      
     return (
      
-        <Container fluid="sm">
+        <Container fluid="sm" style={{width:"40%"}}>
             <ListGroup className="justify-content-md-center" >
-            {lists && lists.length > 0 ? lists.map(list =>{
+            {lists ? lists.map(list =>{
               
-           return  <ListGroup.Item variant="success" key={list.id}><strong>{list.attributes.name }</strong>
+           return  <ListGroup.Item variant="success" key={list.id} ><strong>{list.attributes.name }</strong>
            <Button onClick={() => handleClick(list.id)} variant="info" size="sm"> Delete </Button>
-           </ListGroup.Item>}
-        ) : null}
+           </ListGroup.Item>
+           }) : null}
          </ListGroup>
         </Container>
 

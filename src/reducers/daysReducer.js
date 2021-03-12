@@ -9,11 +9,13 @@ const days = (state = [], action) => {
              return {
                  days: [...state.days, action.day]
              }
-        case "EDIT_DAY":     
-        console.log(action) 
-             return state.map(day => day.id === action.day.id ? action.day : day)
+        // case "EDIT_DAY":    
+        //      return state.map(day => day.id === action.day.id ? action.day : day)
         case "DELETE_DAY":
-            return state.days.filter(day => day.id !== action.dayId ? true : false)
+            const newDays = state.days.filter(day => day.id !== action.dayId )
+            return {
+                days: newDays
+            }
 
         case "CLEAR_DAYS":
             return state

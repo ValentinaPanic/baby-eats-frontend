@@ -68,7 +68,6 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
         const cloneDay = day;
-        console.log(typeof cloneDay)
         days.push(
           <div
             className={`col cell ${
@@ -104,10 +103,10 @@ class Calendar extends React.Component {
   onDateClick = (day) => {
     // console.log(typeof day)
   this.props.changeDate(day)
-    // this.setState({
-    //    selectedDate: dayDate.date
+    this.setState({
+       selectedDate: this.props.newDay.date
      
-    // })
+    })
      
    
   };
