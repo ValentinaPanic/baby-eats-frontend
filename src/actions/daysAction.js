@@ -155,7 +155,7 @@ export const deleteDay = (dayId, history) => {
                 } else {
                   
                     dispatch(deleteDaySuccess(dayId))
-                    history.push(`/current-week`)
+                    history.push(`/home`)
                 }
             }
         )
