@@ -9,9 +9,12 @@ const NavBar = (props) => {
         <>
           <Navbar bg="light" variant="dark" fixed="top" expand="true">
             <div className="mr-auto"> 
-            <NavLink exact activeClassName="active" to='/home'> Home </NavLink>
-            <NavLink exact activeClassName="active" to='/current-week'> Current Week </NavLink>
-            <NavLink exact activeClassName="active" to='/days/new'> Create Meal </NavLink>
+            <NavLink exact activeClassName="active" to='/home'>   Home   </NavLink>
+            <NavLink exact activeClassName="active" to='/current-week'>   Current Week   </NavLink>
+            <NavLink exact activeClassName="active" to='/days/new'>   Create Meal   </NavLink>
+            {/* <NavLink exact activeClassName="active" to='/lists/new'>   New Shopping List   </NavLink> */}
+            <NavLink exact activeClassName="active" to='/lists'>   Shopping List   </NavLink>
+
         
              {props.loggedIn  ? 
              <Logout/>  
