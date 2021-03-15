@@ -22,12 +22,25 @@ export const editDaySuccess = day => {
       
 }
 export const deleteDaySuccess = dayId => {
+     console.log(dayId)
     return {
+       
         type: "DELETE_DAY",
         dayId
     }
       
 }
+
+export const deleteFoodSuccess = foodId => {
+    console.log(foodId)
+   return {
+      
+       type: "DELETE_FOOD",
+       foodId
+   }
+     
+}
+
 export const clearDays =() => {
     return {
         type: "CLEAR_DAYS"
@@ -48,6 +61,7 @@ export const getDays = () => {
         })
         .then(response => response.json())
         .then(data =>{
+            console.log(data.data)
                 if (data.error){
                     alert(data.error)
                 } else {
@@ -137,7 +151,7 @@ export const editDay = (dayData, history) => {
 }
 
 export const deleteDay = (dayId, history) => {
-
+    console.log(dayId)
     return dispatch => {
         
         fetch(`http://localhost:3001/days/${dayId}`, {
@@ -155,10 +169,38 @@ export const deleteDay = (dayId, history) => {
                 } else {
                   
                     dispatch(deleteDaySuccess(dayId))
-                    history.push(`/home`)
+                    history.push(`/current-week`)
                 }
             }
         )
         .catch(console.log)
     }}
    
+
+    export const deleteFood = (dayId,foodId, history) => {
+        console.log("day id is", dayId )
+        console.log("food id is", foodId )
+        return dispatch => {
+            
+            fetch(`http://localhost:3001/days/${dayId}/foods/${foodId}`, {
+                credentials: "include",
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+           
+            })
+            .then(response => response.json())
+            .then(data =>{
+                    if (data.error){
+                        alert(data.error)
+                    } else {
+                      
+                        dispatch(deleteFoodSuccess(foodId))
+                        history.push(`/current-week`)
+                    }
+                }
+            )
+            .catch(console.log)
+        }}
+       
