@@ -19,7 +19,7 @@ const DayForm = ({dayData, createDay, postDay, userId, history}) => {
     }
     const handleSubmit = (event) => {
         event.preventDefault()
-        
+  
         postDay({
             ...dayData,
             userId

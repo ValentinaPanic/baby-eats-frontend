@@ -20,11 +20,11 @@ import NavBar from "../components/NavBar";
             <div>                           
                 {loggedIn ? 
                 <>
-                <NavBar /> 
-                <br/>
+                 <NavBar /> 
+                 <br/>
                  <WeekContainer/> 
-                <DayForm/> 
-                <DayCard days={days} today={today}/>
+                 <DayForm/> 
+                 <DayCard days={days} today={today}/>
                 </>
                  : <WelcomePage/>}
             </div>

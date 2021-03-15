@@ -96,7 +96,7 @@ export const clearCurrentUser = () => {
             })
             .then(response => response.json())
             .then(user =>{
-                
+               
                     if (user.error){
                         alert(user.error)
                     } else {

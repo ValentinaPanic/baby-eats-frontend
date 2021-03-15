@@ -10,7 +10,7 @@ const lists = (state = [], action) => {
          
     case "DELETE_LIST":
         const newList = state.filter(list => list.id !== action.listId)
-        return newList
+        return  newList 
 
     case "CLEAR_LISTS":
         return []

@@ -45,7 +45,6 @@ class App extends Component{
 
 const mapStateToProps = state => {
   return{
-
      loggedIn: !!state.currentUser
   }
  
